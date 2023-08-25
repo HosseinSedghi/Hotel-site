@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Internal packages
     'account_module',
+    'blog',
     # External packages
     'django_render_partial',
     'sorl.thumbnail',
