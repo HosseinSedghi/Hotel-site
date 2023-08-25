@@ -20,7 +20,9 @@
                         <li><a href="room.html">Our Room</a></li>
                         <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li class="{% if request.resolver_match.url_name == 'ticket-page' %}active{% endif %}">
+                            <a href="{% url 'ticket-page' %}">Contact Us</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-md-4">

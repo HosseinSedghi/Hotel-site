@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>keto</title>
+    <title>{% block title %}title{% endblock %}</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -26,7 +26,6 @@
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="{% static 'custom/base_template/css/jquery.mCustomScrollbar.min.css' %}">
 
-    <title>{% block title %}{% endblock %}</title>
 </head>
 <!-- body -->
 <body class="main-layout">

@@ -1,5 +1,9 @@
 {% extends 'shared/layout.html' %}
 
+{% block title %}
+    home page
+{% endblock %}
+
 {% block content %}
     {% include 'includes/base/banner-main-include.html' %}
 
@@ -10,6 +14,4 @@
     {% include 'includes/base/gallery.html' %}
 
     {% include 'includes/base/blog.html' %}
-
-    {% include 'includes/base/contact.html' %}
 {% endblock %}

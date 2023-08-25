@@ -1,7 +1,11 @@
-from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from django.utils.decorators import method_decorator
+from django.views import View
 from django.views.generic import TemplateView
 
-from blog.models import SliderHome, SiteSettings, LinkBox
+from blog.forms import TicketForm
+from blog.models import SliderHome, SiteSettings, LinkBox, Ticket
 from packages.converters import convert_list_to_index
 
 # Create your views here.
@@ -19,6 +23,29 @@ class HomeView(TemplateView):
         context['site'] = SiteSettings.objects.all().first()
         return context
 
+
+class TicketView(View):
+    def get(self, request):
+        form = TicketForm()
+        if request.user.is_authenticated:
+            return render(request, 'blog/contact-us.html', {
+                'form': form
+            })
+        else:
+            return render(request, 'blog/contact-us.html', {})
+
+    def post(self, request):
+        if request.user.is_authenticated:
+            form = TicketForm(request.POST)
+            if form.is_valid():
+                title = form.cleaned_data.get('title')
+                text = form.cleaned_data.get('text')
+                user = request.user
+
+                new_ticket = Ticket(title=title, text=text, user_id=user.id)
+                new_ticket.save()
+
+        return redirect('ticket-page')
 
 # Partial classes
 

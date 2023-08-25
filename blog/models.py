@@ -1,5 +1,8 @@
 from django.db import models
 
+from account_module.models import User
+
+
 # Create your models here.
 
 
@@ -32,3 +35,13 @@ class Links(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Ticket(models.Model):
+    title = models.CharField(max_length=50)
+    text = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
