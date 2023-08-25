@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # Internal packages
     'account_module',
     'blog',
+    'packages',
     # External packages
     'django_render_partial',
     'sorl.thumbnail',
