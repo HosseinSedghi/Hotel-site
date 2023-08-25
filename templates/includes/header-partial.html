@@ -1,3 +1,5 @@
+{% load static %}
+
 <header>
     <!-- header inner -->
     <div class="header">
@@ -7,7 +9,7 @@
                     <div class="full">
                         <div class="center-desk">
                             <div class="logo">
-                                <a href="index.html"><img src="images/logo.png" alt="#"/></a>
+                                <a href="{% url 'home-page' %}"><img src="{% static 'custom/base_template/images/logo.png' %}" alt="#"/></a>
                             </div>
                         </div>
                     </div>
@@ -21,8 +23,8 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarsExample04">
                             <ul class="navbar-nav mr-auto">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="index.html">Home</a>
+                                <li class="nav-item {% if request.resolver_match.url_name == 'home-page' %}active{% endif %}">
+                                    <a class="nav-link" href="{% url 'home-page' %}">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="about.html">About</a>

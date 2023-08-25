@@ -17,5 +17,20 @@ class HomeView(TemplateView):
         context['sliders_count'] = convert_list_to_index(sliders[:-1])
         context['about_image'] = sliders[-1:]
         context['site'] = SiteSettings.objects.all().first()
+        return context
+
+
+# Partial classes
+
+class HeaderPartial(TemplateView):
+    template_name = 'includes/header-partial.html'
+
+
+class FooterPartial(TemplateView):
+    template_name = 'includes/footer-partial.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
         context['boxes'] = LinkBox.objects.all()
+        context['site'] = SiteSettings.objects.all().first()
         return context

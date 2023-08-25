@@ -31,11 +31,11 @@
 <!-- body -->
 <body class="main-layout">
 
-{#    {% render_partial '' %}#}
+    {% render_partial 'blog.views.HeaderPartial' %}
 
-{% block content %}{% endblock %}
+    {% block content %}{% endblock %}
 
-{#    {% render_partial '' %}#}
+    {% render_partial 'blog.views.FooterPartial' %}
 
 <script src="{% static 'custom/base_template/js/jquery.min.js' %}"></script>
 <script src="{% static 'custom/base_template/js/bootstrap.bundle.min.js' %}"></script>
