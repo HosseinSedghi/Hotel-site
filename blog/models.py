@@ -14,4 +14,6 @@ class SiteSettings(models.Model):
     fax = models.CharField(max_length=20)
     phone = models.CharField(max_length=20)
     address = models.CharField(max_length=80)
+    copy_right_text = models.CharField(max_length=50)
+
 
