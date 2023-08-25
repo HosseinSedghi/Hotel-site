@@ -17,3 +17,11 @@ class SiteSettings(models.Model):
     copy_right_text = models.CharField(max_length=50)
 
 
+class LinkBox(models.Model):
+    name = models.CharField(max_length=30)
+
+
+class Links(models.Model):
+    name = models.CharField(max_length=30)
+    link = models.CharField(max_length=130)
+    box = models.ForeignKey(LinkBox, on_delete=models.CASCADE)
