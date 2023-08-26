@@ -45,3 +45,12 @@ class Ticket(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Room(models.Model):
+    image = models.ImageField(upload_to='images/room_images')
+    price = models.IntegerField()
+    bed_count = models.IntegerField()
+    bathroom_count = models.IntegerField()
+    is_internet = models.BooleanField(default=False)
+    is_library = models.BooleanField(default=False)

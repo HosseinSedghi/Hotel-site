@@ -1,80 +1,179 @@
+<style>
+    #myImg {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #myImg:hover {
+        opacity: 0.7;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0); /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+    }
+
+    /* Modal Content (Image) */
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+    }
+
+    /* Caption of Modal Image (Image Text) - Same Width as the Image */
+    #caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+    }
+
+    /* Add Animation - Zoom in the Modal */
+    .modal-content, #caption {
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
+
+    @keyframes zoom {
+        from {
+            transform: scale(0)
+        }
+        to {
+            transform: scale(1)
+        }
+    }
+
+    /* The Close Button */
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px) {
+        .modal-content {
+            width: 100%;
+        }
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <div class="titlepage">
+            <h2>our room</h2>
+        </div>
+    </div>
+</div>
 <div class="our_room">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <div class="titlepage">
-                    <h2>Our Room</h2>
-                    <p>Lorem Ipsum available, but the majority have suffered </p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-sm-6">
-                <div id="serv_hover" class="room">
-                    <div class="room_img">
-                        <figure><img src="images/room1.jpg" alt="#"/></figure>
-                    </div>
-                    <div class="bed_room">
-                        <h3>Bed Room</h3>
-                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div id="serv_hover" class="room">
-                    <div class="room_img">
-                        <figure><img src="images/room2.jpg" alt="#"/></figure>
-                    </div>
-                    <div class="bed_room">
-                        <h3>Bed Room</h3>
-                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div id="serv_hover" class="room">
-                    <div class="room_img">
-                        <figure><img src="images/room3.jpg" alt="#"/></figure>
-                    </div>
-                    <div class="bed_room">
-                        <h3>Bed Room</h3>
-                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div id="serv_hover" class="room">
-                    <div class="room_img">
-                        <figure><img src="images/room4.jpg" alt="#"/></figure>
-                    </div>
-                    <div class="bed_room">
-                        <h3>Bed Room</h3>
-                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div id="serv_hover" class="room">
-                    <div class="room_img">
-                        <figure><img src="images/room5.jpg" alt="#"/></figure>
-                    </div>
-                    <div class="bed_room">
-                        <h3>Bed Room</h3>
-                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there </p>
+            {% for room in rooms %}
+                <div class="col-md-4 col-sm-6">
+                    <div id="serv_hover" class="room">
+                        <div class="room_img">
+                            <figure><img id="{{ room.id }}" src="{{ room.image.url }}" alt="#"/></figure>
+                        </div>
+                        <div class="room-info">
+                            <ul>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-3 text-center"><i class="fa fa-bed"></i></div>
+                                        <div class="col-md-6"></div>
+                                        <div class="col-md-3 text-center">{{ room.bed_count }}</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-3 text-center"><i class="fa fa-bath"></i></div>
+                                        <div class="col-md-6"></div>
+                                        <div class="col-md-3 text-center">{{ room.bathroom_count }}</div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-3 text-center"><i class="fa fa-wifi"></i></div>
+                                        <div class="col-md-6"></div>
+                                        <div class="col-md-3 text-center">
+                                            {% if room.is_internet %}
+                                                <i class="fa fa-circle text-success"></i>
+                                            {% else %}
+                                                <i class="fa fa-circle text-danger"></i>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-3 text-center"><i class="fa fa-book"></i></div>
+                                        <div class="col-md-6"></div>
+                                        <div class="col-md-3 text-center">
+                                            {% if room.is_library %}
+                                                <i class="fa fa-circle text-success"></i>
+                                            {% else %}
+                                                <i class="fa fa-circle text-danger"></i>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-3 text-center"><i class="fa fa-dollar"></i></div>
+                                        <div class="col-md-3"></div>
+                                        <div class="col-md-6 text-right">{{ room.price }}</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 col-sm-6">
-                <div id="serv_hover" class="room">
-                    <div class="room_img">
-                        <figure><img src="images/room6.jpg" alt="#"/></figure>
-                    </div>
-                    <div class="bed_room">
-                        <h3>Bed Room</h3>
-                        <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there </p>
-                    </div>
+                <div id="myModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="img01">
+                    <div id="caption"></div>
                 </div>
-            </div>
+                <script>
+                    var modal = document.getElementById("myModal");
+                    var img = document.getElementById("{{ room.id }}");
+                    var modalImg = document.getElementById("img01");
+                    var captionText = document.getElementById("caption");
+                    img.onclick = function () {
+                        modal.style.display = "block";
+                        modalImg.src = this.src;
+                        captionText.innerHTML = 'Bed Room';
+                    }
+                    var span = document.getElementsByClassName("close")[0];
+                    span.onclick = function () {
+                        modal.style.display = "none";
+                    }
+                </script>
+            {% endfor %}
         </div>
     </div>
 </div>

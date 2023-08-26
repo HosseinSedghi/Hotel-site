@@ -5,7 +5,7 @@ from django.views import View
 from django.views.generic import TemplateView
 
 from blog.forms import TicketForm
-from blog.models import SliderHome, SiteSettings, LinkBox, Ticket
+from blog.models import SliderHome, SiteSettings, LinkBox, Ticket, Room
 from packages.converters import convert_list_to_index
 
 # Create your views here.
@@ -21,6 +21,7 @@ class HomeView(TemplateView):
         context['sliders_count'] = convert_list_to_index(sliders[:-1])
         context['about_image'] = sliders[-1:]
         context['site'] = SiteSettings.objects.all().first()
+        context['rooms'] = Room.objects.all()[:6]
         return context
 
 
@@ -47,6 +48,14 @@ class TicketView(View):
 
         return redirect('ticket-page')
 
+
+class RoomListView(TemplateView):
+    template_name = 'blog/room.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['rooms'] = Room.objects.all()
+        return context
 # Partial classes
 
 class HeaderPartial(TemplateView):

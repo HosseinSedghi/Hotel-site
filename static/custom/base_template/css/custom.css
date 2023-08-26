@@ -1,0 +1,16 @@
+.room-info {
+    margin: 10px;
+    text-align: left;
+}
+
+.room-info ul {
+    font-size: 1.3em;
+}
+
+.room-info ul li {
+    border-bottom: 1px solid gray;
+}
+
+.room-info ul li:last-child {
+    border-bottom: none;
+}
