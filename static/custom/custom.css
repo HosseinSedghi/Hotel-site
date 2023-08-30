@@ -14,3 +14,11 @@
 .room-info ul li:last-child {
     border-bottom: none;
 }
+
+.no-selection {
+    user-select: none;
+}
+
+.hover-pointer:hover {
+    cursor: pointer;
+}

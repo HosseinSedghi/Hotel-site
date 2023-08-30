@@ -26,16 +26,16 @@
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="{% static 'custom/base_template/css/jquery.mCustomScrollbar.min.css' %}">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'custom/base_template/css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'custom/custom.css' %}">
 </head>
 <!-- body -->
 <body class="main-layout">
 
-    {% render_partial 'blog.views.HeaderPartial' %}
+{% render_partial 'blog.views.HeaderPartial' %}
 
-    {% block content %}{% endblock %}
+{% block content %}{% endblock %}
 
-    {% render_partial 'blog.views.FooterPartial' %}
+{% render_partial 'blog.views.FooterPartial' %}
 
 <script src="{% static 'custom/base_template/js/jquery.min.js' %}"></script>
 <script src="{% static 'custom/base_template/js/bootstrap.bundle.min.js' %}"></script>
@@ -43,5 +43,6 @@
 <!-- sidebar -->
 <script src="{% static 'custom/base_template/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
 <script src="{% static 'custom/base_template/js/custom.js' %}"></script>
+<script src="{% static 'custom/custom.js' %}"></script>
 </body>
 </html>

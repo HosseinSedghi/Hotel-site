@@ -20,7 +20,9 @@
                         <li class="{% if request.resolver_match.url_name == 'room-page' %}active{% endif %}">
                             <a href="{% url 'room-page' %}">Our Room</a>
                         </li>
-                        <li><a href="gallery.html">Gallery</a></li>
+                        <li class="{% if request.resolver_match.url_name == 'gallery-page' %}active{% endif %}">
+                            <a href="{% url 'gallery-page' %}">Gallery</a>
+                        </li>
                         <li><a href="blog.html">Blog</a></li>
                         <li class="{% if request.resolver_match.url_name == 'ticket-page' %}active{% endif %}">
                             <a href="{% url 'ticket-page' %}">Contact Us</a>

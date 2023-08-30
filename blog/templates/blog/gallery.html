@@ -1,0 +1,44 @@
+{% extends 'shared/layout.html' %}
+{% load thumbnail %}
+
+{% block title %}
+    Gallery page
+{% endblock %}
+
+{% block content %}
+    <div class="back_re">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title">
+                        <h2>gallery</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gallery">
+        <div class="container">
+            {% for item in gallery_list %}
+                {% if item.gallery %}
+                    <div class="row">
+                        <div class="col-md-3 hover-pointer">
+                            <h3 class="alert alert-info no-selection">{{ item.name }}</h3>
+                        </div>
+                    </div>
+                    <div class="row" id="gallery-box">
+                        {% for gallery in item.gallery %}
+                            <div class="col-md-3 col-sm-6">
+                                <div class="gallery_img">
+                                    {% thumbnail gallery.image '222x188' crop='center' as img %}
+                                    <figure><img src="{{ img.url }}" alt="#"/></figure>
+                                    {% endthumbnail %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

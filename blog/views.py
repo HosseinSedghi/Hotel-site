@@ -5,8 +5,9 @@ from django.views import View
 from django.views.generic import TemplateView
 
 from blog.forms import TicketForm
-from blog.models import SliderHome, SiteSettings, LinkBox, Ticket, Room
+from blog.models import SliderHome, SiteSettings, LinkBox, Ticket, Room, Gallery, GalleryCategory
 from packages.converters import convert_list_to_index
+
 
 # Create your views here.
 
@@ -22,6 +23,7 @@ class HomeView(TemplateView):
         context['about_image'] = sliders[-1:]
         context['site'] = SiteSettings.objects.all().first()
         context['rooms'] = Room.objects.all()[:6]
+        context['galleries'] = Gallery.objects.all()[:8] # todo: get random gallery
         return context
 
 
@@ -56,7 +58,28 @@ class RoomListView(TemplateView):
         context = super().get_context_data()
         context['rooms'] = Room.objects.all()
         return context
-# Partial classes
+
+
+class GalleryView(TemplateView):
+    template_name = 'blog/gallery.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        categories = GalleryCategory.objects.all()
+        gallery_list = []
+        for category in categories:
+            item = {
+                'id': category.id,
+                'name': category.name,
+                'gallery': category.gallery_set.all()[:4],
+                'all_gallery': category.gallery_set.all()
+            }
+            gallery_list.append(item)
+        context['gallery_list'] = gallery_list
+        return context
+
+
+# ========================================= Partial classes ========================================= #
 
 class HeaderPartial(TemplateView):
     template_name = 'includes/header-partial.html'
