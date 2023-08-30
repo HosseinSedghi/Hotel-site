@@ -36,8 +36,8 @@
                                 <li class="nav-item {% if request.resolver_match.url_name == 'gallery-page' %}active{% endif %}">
                                     <a class="nav-link" href="{% url 'gallery-page' %}">Gallery</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="blog.html">Blog</a>
+                                <li class="nav-item {% if request.resolver_match.url_name == 'blog-page' %}active{% endif %}">
+                                    <a class="nav-link" href="{% url 'blog-page' %}">Blog</a>
                                 </li>
                                 <li class="nav-item {% if request.resolver_match.url_name == 'ticket-page' %}active{% endif %}">
                                     <a class="nav-link" href="{% url 'ticket-page' %}">Contact Us</a>

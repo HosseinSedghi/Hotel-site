@@ -23,7 +23,9 @@
                         <li class="{% if request.resolver_match.url_name == 'gallery-page' %}active{% endif %}">
                             <a href="{% url 'gallery-page' %}">Gallery</a>
                         </li>
-                        <li><a href="blog.html">Blog</a></li>
+                        <li class="{% if request.resolver_match.url_name == 'blog-page' %}active{% endif %}">
+                            <a href="{% url 'blog-page' %}">Blog</a>
+                        </li>
                         <li class="{% if request.resolver_match.url_name == 'ticket-page' %}active{% endif %}">
                             <a href="{% url 'ticket-page' %}">Contact Us</a>
                         </li>

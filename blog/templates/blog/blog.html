@@ -1,0 +1,52 @@
+{% extends 'shared/layout.html' %}
+{% load thumbnail %}
+
+{% block title %}
+    blog
+{% endblock %}
+
+{% block content %}
+    <div class="back_re">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title">
+                        <h2>Blog</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+
+                        <p class="margin_0">Lorem Ipsum available, but the majority have suffered </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for article in articles %}
+                    <div class="col-md-4">
+                        <div class="blog_box box-shadow">
+                            <div class="blog_img">
+                                {% thumbnail article.image '306x189' crop='center' as img %}
+                                    <figure><img src="{{ img.url }}" alt="#"/></figure>
+                                {% endthumbnail %}
+                            </div>
+                            <div class="blog_room">
+                                <h3>{{ article.title }}</h3>
+                                <p>
+                                    {{ article.text|linebreaks }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

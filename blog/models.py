@@ -22,11 +22,13 @@ class SiteSettings(models.Model):
     def __str__(self):
         return self.site_name
 
+
 class LinkBox(models.Model):
     name = models.CharField(max_length=30)
 
     def __str__(self):
         return self.name
+
 
 class Links(models.Model):
     name = models.CharField(max_length=30)
@@ -62,9 +64,20 @@ class GalleryCategory(models.Model):
     def __str__(self):
         return self.name
 
+
 class Gallery(models.Model):
     image = models.ImageField(upload_to='images/gallery_images')
     category = models.ForeignKey(GalleryCategory, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.category.name
+
+
+class Blog(models.Model):
+    title = models.CharField(max_length=20)
+    text = models.TextField()
+    image = models.ImageField(upload_to='images/blog_images')
+    is_publish = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title

@@ -405,7 +405,7 @@ button {
 
 .titlepage h2 {
      font-size: 40px;
-     color: #121212;
+     color: #121212 !important;
      line-height: 45px;
      font-weight: bold;
      text-transform: uppercase;
