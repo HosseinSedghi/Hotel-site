@@ -1,0 +1,37 @@
+{% extends 'shared/account-layout.html' %}
+
+{% block title %}
+    login page
+{% endblock %}
+
+{% block page-title %}
+    Login
+{% endblock %}
+
+{% block action %}
+    {% url 'login-page' %}
+{% endblock %}
+
+{% block forms %}
+    <div class="user-box">
+        {{ form.username }}
+        <label>Username</label>
+    </div>
+    <div class="user-box">
+        {{ form.password }}
+        <label>Password</label>
+    </div>
+{% endblock %}
+
+{% block error-messages %}
+    {% if form.errors %}
+        <div class="error-box">
+            {{ form.username.errors }}
+            {{ form.password.errors }}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block btn-text %}
+    Login
+{% endblock %}
