@@ -1,4 +1,4 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect
 from django.views import View
 
@@ -36,3 +36,9 @@ class Login(View):
         return render(request, 'account_module/login.html', {
             'form': form
         })
+
+
+class Logout(View):
+    def get(self, request):
+        logout(request)
+        return redirect('home-page')
