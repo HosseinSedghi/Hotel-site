@@ -26,3 +26,11 @@
 .box-shadow {
     box-shadow: 0 0 10px #121212;
 }
+
+.profile {
+}
+
+.profile img {
+    margin: 0 15px;
+    border-radius: 50%;
+}
